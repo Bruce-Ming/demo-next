@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 192.168.0.185",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "build-export": "next build && next export",
+    "build:staging": "APP_ENV=development next build",
+    "start": "next start ",
+    "lint": "next lint",
+    "scp": "scp -i /Users/bruce-ming/.ssh/id_rsa-remote-ssh -r ./.next/* root@118.24.185.42:/www/frontend/pc/.next/",
+    "scp-config": "scp -i /Users/bruce-ming/.ssh/id_rsa-remote-ssh ecosystem.config.js .env .env.production  ./package.json ./next.config.js root@118.24.185.42:/www/frontend/pc/"
   },
   "dependencies": {
     "next": "12.2.0",
@@ -17,8 +21,12 @@
     "@types/node": "18.0.1",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.6",
+    "autoprefixer": "^10.4.7",
     "eslint": "8.19.0",
     "eslint-config-next": "12.2.0",
+    "postcss": "^8.4.14",
+    "sass": "^1.54.0",
+    "tailwindcss": "^3.1.6",
     "typescript": "4.7.4"
   }
 }
